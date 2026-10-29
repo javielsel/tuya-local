@@ -48,6 +48,15 @@ entities:
           - dps_val: high
             value: comfort
             available: text_presets
+          - dps_val: Antiforst
+            value: away
+            available: word_presets
+          - dps_val: Eco
+            value: eco
+            available: word_presets
+          - dps_val: Comfort
+            value: comfort
+            available: word_presets
       - id: 4
         type: string
         optional: true
@@ -64,8 +73,17 @@ entities:
         mapping:
           - value: true
             conditions:
-              - dps_val: [low, high, AF]
+              - dps_val: [low, high, AF, Comfort, Eco, Antiforst]
                 value: false
+      - id: 4
+        type: string
+        optional: true
+        name: word_presets
+        mapping:
+          - value: false
+            conditions:
+              - dps_val: [Comfort, Eco, Antiforst]
+                value: true
   - entity: lock
     translation_key: child_lock
     category: config
